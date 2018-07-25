@@ -48,11 +48,6 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Client API Version.
-        /// </summary>
-        string ApiVersion { get; }
-
-        /// <summary>
         /// Gets or sets the preferred language for the response.
         /// </summary>
         string AcceptLanguage { get; set; }
@@ -89,6 +84,16 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         /// Gets the IVMExtensionsOperations.
         /// </summary>
         IVMExtensionsOperations VMExtensions { get; }
+
+        /// <summary>
+        /// Gets the IDisksOperations.
+        /// </summary>
+        IDisksOperations Disks { get; }
+
+        /// <summary>
+        /// Gets the IDiskMigrationsOperations.
+        /// </summary>
+        IDiskMigrationsOperations DiskMigrations { get; }
 
     }
 }

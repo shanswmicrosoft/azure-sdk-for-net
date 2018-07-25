@@ -111,10 +111,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "version");
             }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
+            string apiVersion = "2015-12-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -126,6 +123,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
                 tracingParameters.Add("publisher", publisher);
                 tracingParameters.Add("type", type);
                 tracingParameters.Add("version", version);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Get", tracingParameters);
             }
@@ -138,9 +136,9 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             _url = _url.Replace("{type}", System.Uri.EscapeDataString(type));
             _url = _url.Replace("{version}", System.Uri.EscapeDataString(version));
             List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -331,14 +329,11 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "version");
             }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
             if (extension == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "extension");
             }
+            string apiVersion = "2015-12-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -350,6 +345,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
                 tracingParameters.Add("publisher", publisher);
                 tracingParameters.Add("type", type);
                 tracingParameters.Add("version", version);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("extension", extension);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Create", tracingParameters);
@@ -363,9 +359,9 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             _url = _url.Replace("{type}", System.Uri.EscapeDataString(type));
             _url = _url.Replace("{version}", System.Uri.EscapeDataString(version));
             List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -574,10 +570,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "version");
             }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
+            string apiVersion = "2015-12-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -589,6 +582,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
                 tracingParameters.Add("publisher", publisher);
                 tracingParameters.Add("type", type);
                 tracingParameters.Add("version", version);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Delete", tracingParameters);
             }
@@ -601,9 +595,9 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             _url = _url.Replace("{type}", System.Uri.EscapeDataString(type));
             _url = _url.Replace("{version}", System.Uri.EscapeDataString(version));
             List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {
@@ -752,10 +746,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
             }
-            if (Client.ApiVersion == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.ApiVersion");
-            }
+            string apiVersion = "2015-12-01-preview";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -764,6 +755,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("location", location);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }
@@ -773,9 +765,9 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             List<string> _queryParameters = new List<string>();
-            if (Client.ApiVersion != null)
+            if (apiVersion != null)
             {
-                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(Client.ApiVersion)));
+                _queryParameters.Add(string.Format("api-version={0}", System.Uri.EscapeDataString(apiVersion)));
             }
             if (_queryParameters.Count > 0)
             {

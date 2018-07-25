@@ -54,11 +54,6 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         public string SubscriptionId { get; set; }
 
         /// <summary>
-        /// Client API Version.
-        /// </summary>
-        public string ApiVersion { get; private set; }
-
-        /// <summary>
         /// Gets or sets the preferred language for the response.
         /// </summary>
         public string AcceptLanguage { get; set; }
@@ -94,6 +89,16 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         /// Gets the IVMExtensionsOperations.
         /// </summary>
         public virtual IVMExtensionsOperations VMExtensions { get; private set; }
+
+        /// <summary>
+        /// Gets the IDisksOperations.
+        /// </summary>
+        public virtual IDisksOperations Disks { get; private set; }
+
+        /// <summary>
+        /// Gets the IDiskMigrationsOperations.
+        /// </summary>
+        public virtual IDiskMigrationsOperations DiskMigrations { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the ComputeAdminClient class.
@@ -300,8 +305,9 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             PlatformImages = new PlatformImagesOperations(this);
             Quotas = new QuotasOperations(this);
             VMExtensions = new VMExtensionsOperations(this);
+            Disks = new DisksOperations(this);
+            DiskMigrations = new DiskMigrationsOperations(this);
             BaseUri = new System.Uri("https://adminmanagement.local.azurestack.external");
-            ApiVersion = "2015-12-01-preview";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;
