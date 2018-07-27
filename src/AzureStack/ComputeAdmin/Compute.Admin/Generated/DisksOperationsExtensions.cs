@@ -32,7 +32,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             /// <param name='location'>
             /// Location of the resource.
             /// </param>
-            /// <param name='tenantSubscriptionId'>
+            /// <param name='userSubscriptionId'>
             /// Tenant Subscription Id which the resource belongs to.
             /// </param>
             /// <param name='status'>
@@ -47,9 +47,9 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             /// <param name='start'>
             /// The start index of disks in query.
             /// </param>
-            public static IEnumerable<Disk> List(this IDisksOperations operations, string location, string tenantSubscriptionId = default(string), string status = default(string), string sharePath = default(string), int? count = default(int?), int? start = default(int?))
+            public static IEnumerable<Disk> List(this IDisksOperations operations, string location, string userSubscriptionId = default(string), string status = default(string), string sharePath = default(string), int? count = default(int?), int? start = default(int?))
             {
-                return operations.ListAsync(location, tenantSubscriptionId, status, sharePath, count, start).GetAwaiter().GetResult();
+                return operations.ListAsync(location, userSubscriptionId, status, sharePath, count, start).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -61,7 +61,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             /// <param name='location'>
             /// Location of the resource.
             /// </param>
-            /// <param name='tenantSubscriptionId'>
+            /// <param name='userSubscriptionId'>
             /// Tenant Subscription Id which the resource belongs to.
             /// </param>
             /// <param name='status'>
@@ -79,9 +79,9 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<Disk>> ListAsync(this IDisksOperations operations, string location, string tenantSubscriptionId = default(string), string status = default(string), string sharePath = default(string), int? count = default(int?), int? start = default(int?), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<Disk>> ListAsync(this IDisksOperations operations, string location, string userSubscriptionId = default(string), string status = default(string), string sharePath = default(string), int? count = default(int?), int? start = default(int?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(location, tenantSubscriptionId, status, sharePath, count, start, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(location, userSubscriptionId, status, sharePath, count, start, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

@@ -6,9 +6,9 @@ using Xunit;
 
 namespace Compute.Tests
 {
-    public class DiskMigrationTests : ComputeTestBase
+    public class DiskMigrationJobTests : ComputeTestBase
     {
-        private void ValidateDiskMigration(DiskMigration diskMigration)
+        private void ValidateDiskMigration(DiskMigrationJob diskMigration)
         {
             Assert.NotNull(diskMigration);
             Assert.NotNull(diskMigration.CreationTime);
@@ -42,19 +42,19 @@ namespace Compute.Tests
 
                 var migrationId = "ba0644a4-c2ed-4e3c-a167-089a32865297"; // System.Guid.NewGuid().ToString(); This guid should be the same as the ones in sessionRecord
 
-                var migration = client.DiskMigrations.Create(Location, migrationId, targetShare, toMigrationDisks);
+                var migration = client.DiskMigrationJobs.Create(Location, migrationId, targetShare, toMigrationDisks);
                 ValidateDiskMigration(migration);
 
-                migration = client.DiskMigrations.Cancel(Location, migrationId);
+                migration = client.DiskMigrationJobs.Cancel(Location, migrationId);
                 ValidateDiskMigration(migration);
 
-                var migrationFromGet = client.DiskMigrations.Get(Location, migrationId);
+                var migrationFromGet = client.DiskMigrationJobs.Get(Location, migrationId);
                 ValidateDiskMigration(migrationFromGet);
 
-                var migrationList = client.DiskMigrations.List(Location);
+                var migrationList = client.DiskMigrationJobs.List(Location);
                 migrationList.ForEach(ValidateDiskMigration);
 
-                var migrationSucceededList = client.DiskMigrations.List(Location, status: "Succeeded");
+                var migrationSucceededList = client.DiskMigrationJobs.List(Location, status: "Succeeded");
                 migrationSucceededList.ForEach(ValidateDiskMigration);
             });
         }

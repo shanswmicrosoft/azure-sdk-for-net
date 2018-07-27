@@ -19,9 +19,9 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
     using System.Threading.Tasks;
 
     /// <summary>
-    /// DiskMigrationsOperations operations.
+    /// DiskMigrationJobsOperations operations.
     /// </summary>
-    public partial interface IDiskMigrationsOperations
+    public partial interface IDiskMigrationJobsOperations
     {
         /// <summary>
         /// Returns a list of disk migration jobs.
@@ -47,7 +47,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<DiskMigration>>> ListWithHttpMessagesAsync(string location, string status = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<DiskMigrationJob>>> ListWithHttpMessagesAsync(string location, string status = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Returns the requested disk migration job.
         /// </summary>
@@ -72,7 +72,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DiskMigration>> GetWithHttpMessagesAsync(string location, string migrationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DiskMigrationJob>> GetWithHttpMessagesAsync(string location, string migrationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Create a disk migration job.
         /// </summary>
@@ -103,7 +103,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DiskMigration>> CreateWithHttpMessagesAsync(string location, string migrationId, string targetShare, IList<Disk> disks, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DiskMigrationJob>> CreateWithHttpMessagesAsync(string location, string migrationId, string targetShare, IList<Disk> disks, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Cancel a disk migration job.
         /// </summary>
@@ -128,6 +128,6 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DiskMigration>> CancelWithHttpMessagesAsync(string location, string migrationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DiskMigrationJob>> CancelWithHttpMessagesAsync(string location, string migrationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -21,18 +21,18 @@ namespace Microsoft.AzureStack.Management.Compute.Admin.Models
     /// Disk migration job.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class DiskMigration : Resource
+    public partial class DiskMigrationJob : Resource
     {
         /// <summary>
-        /// Initializes a new instance of the DiskMigration class.
+        /// Initializes a new instance of the DiskMigrationJob class.
         /// </summary>
-        public DiskMigration()
+        public DiskMigrationJob()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the DiskMigration class.
+        /// Initializes a new instance of the DiskMigrationJob class.
         /// </summary>
         /// <param name="id">ID of the resource.</param>
         /// <param name="name">Name of the resource.</param>
@@ -48,7 +48,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin.Models
         /// <param name="endTime">The job end time.</param>
         /// <param name="targetShare">The target share of migration
         /// job.</param>
-        public DiskMigration(string id = default(string), string name = default(string), string type = default(string), string location = default(string), string migrationId = default(string), string status = default(string), IList<MigrationSubTask> subtasks = default(IList<MigrationSubTask>), System.DateTime? creationTime = default(System.DateTime?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string targetShare = default(string))
+        public DiskMigrationJob(string id = default(string), string name = default(string), string type = default(string), string location = default(string), string migrationId = default(string), string status = default(string), IList<MigrationSubTask> subtasks = default(IList<MigrationSubTask>), System.DateTime? creationTime = default(System.DateTime?), System.DateTime? startTime = default(System.DateTime?), System.DateTime? endTime = default(System.DateTime?), string targetShare = default(string))
             : base(id, name, type, location)
         {
             MigrationId = migrationId;

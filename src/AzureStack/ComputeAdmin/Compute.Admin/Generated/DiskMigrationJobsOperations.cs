@@ -23,12 +23,12 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
     using System.Threading.Tasks;
 
     /// <summary>
-    /// DiskMigrationsOperations operations.
+    /// DiskMigrationJobsOperations operations.
     /// </summary>
-    internal partial class DiskMigrationsOperations : IServiceOperations<ComputeAdminClient>, IDiskMigrationsOperations
+    internal partial class DiskMigrationJobsOperations : IServiceOperations<ComputeAdminClient>, IDiskMigrationJobsOperations
     {
         /// <summary>
-        /// Initializes a new instance of the DiskMigrationsOperations class.
+        /// Initializes a new instance of the DiskMigrationJobsOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -36,7 +36,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal DiskMigrationsOperations(ComputeAdminClient client)
+        internal DiskMigrationJobsOperations(ComputeAdminClient client)
         {
             if (client == null)
             {
@@ -80,7 +80,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IEnumerable<DiskMigration>>> ListWithHttpMessagesAsync(string location, string status = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IEnumerable<DiskMigrationJob>>> ListWithHttpMessagesAsync(string location, string status = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -106,7 +106,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/diskmigrations").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/diskmigrationjobs").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             List<string> _queryParameters = new List<string>();
@@ -211,7 +211,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<IEnumerable<DiskMigration>>();
+            var _result = new AzureOperationResponse<IEnumerable<DiskMigrationJob>>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -224,7 +224,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<DiskMigration>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<Page1<DiskMigrationJob>>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -273,7 +273,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DiskMigration>> GetWithHttpMessagesAsync(string location, string migrationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DiskMigrationJob>> GetWithHttpMessagesAsync(string location, string migrationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -303,7 +303,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/diskmigrations/{migrationId}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/diskmigrationjobs/{migrationId}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{migrationId}", System.Uri.EscapeDataString(migrationId));
@@ -405,7 +405,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<DiskMigration>();
+            var _result = new AzureOperationResponse<DiskMigrationJob>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -418,7 +418,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DiskMigration>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DiskMigrationJob>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -473,7 +473,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DiskMigration>> CreateWithHttpMessagesAsync(string location, string migrationId, string targetShare, IList<Disk> disks, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DiskMigrationJob>> CreateWithHttpMessagesAsync(string location, string migrationId, string targetShare, IList<Disk> disks, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -513,7 +513,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/diskmigrations/{migrationId}").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/diskmigrationjobs/{migrationId}").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{migrationId}", System.Uri.EscapeDataString(migrationId));
@@ -625,7 +625,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<DiskMigration>();
+            var _result = new AzureOperationResponse<DiskMigrationJob>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -638,7 +638,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DiskMigration>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DiskMigrationJob>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {
@@ -687,7 +687,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DiskMigration>> CancelWithHttpMessagesAsync(string location, string migrationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DiskMigrationJob>> CancelWithHttpMessagesAsync(string location, string migrationId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -717,7 +717,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/diskmigrations/{migrationId}/Cancel").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Compute.Admin/locations/{location}/diskmigrationjobs/{migrationId}/Cancel").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             _url = _url.Replace("{migrationId}", System.Uri.EscapeDataString(migrationId));
@@ -819,7 +819,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<DiskMigration>();
+            var _result = new AzureOperationResponse<DiskMigrationJob>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
@@ -832,7 +832,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DiskMigration>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<DiskMigrationJob>(_responseContent, Client.DeserializationSettings);
                 }
                 catch (JsonException ex)
                 {

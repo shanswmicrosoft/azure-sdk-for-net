@@ -14,11 +14,12 @@ namespace Compute.Tests
         {
             Assert.NotNull(disk);
             Assert.NotNull(disk.ActualSize);
+            Assert.NotNull(disk.ProvisionSize);
             Assert.NotNull(disk.DiskSku);
             Assert.NotNull(disk.ResourceType);
             Assert.NotNull(disk.SharePath);
             Assert.NotNull(disk.Status);
-            Assert.NotNull(disk.TenantId);
+            Assert.NotNull(disk.UserResourceId);
             Assert.NotNull(disk.Type);
             Assert.NotNull(disk.Id);
             Assert.NotNull(disk.Name);
@@ -45,7 +46,7 @@ namespace Compute.Tests
 
         private bool IsDiskExistsInCollection(Disk disk, IEnumerable<Disk> disks)
         {
-            return disks.Any(diskInCollection => diskInCollection.TenantId.Equals(disk.TenantId, StringComparison.OrdinalIgnoreCase));
+            return disks.Any(diskInCollection => diskInCollection.UserResourceId.Equals(disk.UserResourceId, StringComparison.OrdinalIgnoreCase));
         }
 
         [Fact]
@@ -58,10 +59,10 @@ namespace Compute.Tests
                 if(disks.Count()>0)
                 {
                     var firstDisk = disks.First();
-                    var tenantSubscriptionId = firstDisk.TenantId.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    var tenantSubscriptionId = firstDisk.UserResourceId.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries)[1];
 
-                    var disksForSubscription = client.Disks.List(Location, tenantSubscriptionId: tenantSubscriptionId);
-                    ValidateDisksTheSame(disks.Where(disk => disk.TenantId.Contains(tenantSubscriptionId)), disksForSubscription);
+                    var disksForSubscription = client.Disks.List(Location, userSubscriptionId: tenantSubscriptionId);
+                    ValidateDisksTheSame(disks.Where(disk => disk.UserResourceId.Contains(tenantSubscriptionId)), disksForSubscription);
 
                     var disksForStatus = client.Disks.List(Location, status: firstDisk.Status);
                     ValidateDisksTheSame(disks.Where(disk => disk.Status.Equals(firstDisk.Status, StringComparison.OrdinalIgnoreCase)), disksForStatus);

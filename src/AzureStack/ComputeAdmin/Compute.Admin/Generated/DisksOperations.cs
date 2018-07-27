@@ -56,7 +56,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         /// <param name='location'>
         /// Location of the resource.
         /// </param>
-        /// <param name='tenantSubscriptionId'>
+        /// <param name='userSubscriptionId'>
         /// Tenant Subscription Id which the resource belongs to.
         /// </param>
         /// <param name='status'>
@@ -92,7 +92,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IEnumerable<Disk>>> ListWithHttpMessagesAsync(string location, string tenantSubscriptionId = default(string), string status = default(string), string sharePath = default(string), int? count = default(int?), int? start = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IEnumerable<Disk>>> ListWithHttpMessagesAsync(string location, string userSubscriptionId = default(string), string status = default(string), string sharePath = default(string), int? count = default(int?), int? start = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -111,7 +111,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("location", location);
-                tracingParameters.Add("tenantSubscriptionId", tenantSubscriptionId);
+                tracingParameters.Add("userSubscriptionId", userSubscriptionId);
                 tracingParameters.Add("status", status);
                 tracingParameters.Add("sharePath", sharePath);
                 tracingParameters.Add("count", count);
@@ -126,9 +126,9 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Client.SubscriptionId));
             _url = _url.Replace("{location}", System.Uri.EscapeDataString(location));
             List<string> _queryParameters = new List<string>();
-            if (tenantSubscriptionId != null)
+            if (userSubscriptionId != null)
             {
-                _queryParameters.Add(string.Format("tenantSubscriptionId={0}", System.Uri.EscapeDataString(tenantSubscriptionId)));
+                _queryParameters.Add(string.Format("userSubscriptionId={0}", System.Uri.EscapeDataString(userSubscriptionId)));
             }
             if (status != null)
             {

@@ -29,7 +29,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         /// <param name='location'>
         /// Location of the resource.
         /// </param>
-        /// <param name='tenantSubscriptionId'>
+        /// <param name='userSubscriptionId'>
         /// Tenant Subscription Id which the resource belongs to.
         /// </param>
         /// <param name='status'>
@@ -59,7 +59,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IEnumerable<Disk>>> ListWithHttpMessagesAsync(string location, string tenantSubscriptionId = default(string), string status = default(string), string sharePath = default(string), int? count = default(int?), int? start = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IEnumerable<Disk>>> ListWithHttpMessagesAsync(string location, string userSubscriptionId = default(string), string status = default(string), string sharePath = default(string), int? count = default(int?), int? start = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Returns the disk.
         /// </summary>

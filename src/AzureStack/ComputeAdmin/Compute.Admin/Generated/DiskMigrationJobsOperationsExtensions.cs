@@ -19,9 +19,9 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Extension methods for DiskMigrationsOperations.
+    /// Extension methods for DiskMigrationJobsOperations.
     /// </summary>
-    public static partial class DiskMigrationsOperationsExtensions
+    public static partial class DiskMigrationJobsOperationsExtensions
     {
             /// <summary>
             /// Returns a list of disk migration jobs.
@@ -35,7 +35,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             /// <param name='status'>
             /// The parameters of disk migration job status.
             /// </param>
-            public static IEnumerable<DiskMigration> List(this IDiskMigrationsOperations operations, string location, string status = default(string))
+            public static IEnumerable<DiskMigrationJob> List(this IDiskMigrationJobsOperations operations, string location, string status = default(string))
             {
                 return operations.ListAsync(location, status).GetAwaiter().GetResult();
             }
@@ -55,7 +55,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IEnumerable<DiskMigration>> ListAsync(this IDiskMigrationsOperations operations, string location, string status = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IEnumerable<DiskMigrationJob>> ListAsync(this IDiskMigrationJobsOperations operations, string location, string status = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListWithHttpMessagesAsync(location, status, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -75,7 +75,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             /// <param name='migrationId'>
             /// The migration job guid name.
             /// </param>
-            public static DiskMigration Get(this IDiskMigrationsOperations operations, string location, string migrationId)
+            public static DiskMigrationJob Get(this IDiskMigrationJobsOperations operations, string location, string migrationId)
             {
                 return operations.GetAsync(location, migrationId).GetAwaiter().GetResult();
             }
@@ -95,7 +95,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DiskMigration> GetAsync(this IDiskMigrationsOperations operations, string location, string migrationId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DiskMigrationJob> GetAsync(this IDiskMigrationJobsOperations operations, string location, string migrationId, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.GetWithHttpMessagesAsync(location, migrationId, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -121,7 +121,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             /// <param name='disks'>
             /// The parameters of disk list.
             /// </param>
-            public static DiskMigration Create(this IDiskMigrationsOperations operations, string location, string migrationId, string targetShare, IList<Disk> disks)
+            public static DiskMigrationJob Create(this IDiskMigrationJobsOperations operations, string location, string migrationId, string targetShare, IList<Disk> disks)
             {
                 return operations.CreateAsync(location, migrationId, targetShare, disks).GetAwaiter().GetResult();
             }
@@ -147,7 +147,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DiskMigration> CreateAsync(this IDiskMigrationsOperations operations, string location, string migrationId, string targetShare, IList<Disk> disks, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DiskMigrationJob> CreateAsync(this IDiskMigrationJobsOperations operations, string location, string migrationId, string targetShare, IList<Disk> disks, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CreateWithHttpMessagesAsync(location, migrationId, targetShare, disks, null, cancellationToken).ConfigureAwait(false))
                 {
@@ -167,7 +167,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             /// <param name='migrationId'>
             /// The migration job guid name.
             /// </param>
-            public static DiskMigration Cancel(this IDiskMigrationsOperations operations, string location, string migrationId)
+            public static DiskMigrationJob Cancel(this IDiskMigrationJobsOperations operations, string location, string migrationId)
             {
                 return operations.CancelAsync(location, migrationId).GetAwaiter().GetResult();
             }
@@ -187,7 +187,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DiskMigration> CancelAsync(this IDiskMigrationsOperations operations, string location, string migrationId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DiskMigrationJob> CancelAsync(this IDiskMigrationJobsOperations operations, string location, string migrationId, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.CancelWithHttpMessagesAsync(location, migrationId, null, cancellationToken).ConfigureAwait(false))
                 {
