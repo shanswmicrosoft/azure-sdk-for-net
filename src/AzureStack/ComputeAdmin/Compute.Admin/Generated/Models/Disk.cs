@@ -42,29 +42,30 @@ namespace Microsoft.AzureStack.Management.Compute.Admin.Models
         /// 'Unknown', 'All', 'Recommended', 'OfflineMigration',
         /// 'OnlineMigration'</param>
         /// <param name="sharePath">The disk share path.</param>
-        /// <param name="actualSize">The actual size of disk.</param>
-        /// <param name="provisionSize">The provision size of disk.</param>
+        /// <param name="actualSizeGB">The actual size of disk in GB.</param>
+        /// <param name="provisionSizeGB">The provision size of disk in
+        /// GB.</param>
         /// <param name="managedBy">Compute resource Uri which owns this
         /// disk.</param>
-        /// <param name="userResourceId">The disk resource Uri from tenant
+        /// <param name="userResourceId">The disk resource Uri from user
         /// view.</param>
-        /// <param name="resourceType">The type of the resource. Possible
+        /// <param name="diskType">The type of the disk resource. Possible
         /// values include: 'Undefined', 'Disk', 'Snapshot', 'RestorePoint',
         /// 'ManagedBlob'</param>
         /// <param name="diskSku">the disk sku. Possible values include:
         /// 'Standard_LRS', 'Standard_ZRS', 'Standard_GRS', 'Standard_RAGRS',
         /// 'Premium_LRS', 'StandardSSD_LRS', 'UltraSSD_LRS'</param>
-        public Disk(string id = default(string), string name = default(string), string type = default(string), string location = default(string), string diskId = default(string), string status = default(string), string sharePath = default(string), long? actualSize = default(long?), long? provisionSize = default(long?), string managedBy = default(string), string userResourceId = default(string), string resourceType = default(string), string diskSku = default(string))
+        public Disk(string id = default(string), string name = default(string), string type = default(string), string location = default(string), string diskId = default(string), string status = default(string), string sharePath = default(string), long? actualSizeGB = default(long?), long? provisionSizeGB = default(long?), string managedBy = default(string), string userResourceId = default(string), string diskType = default(string), string diskSku = default(string))
             : base(id, name, type, location)
         {
             DiskId = diskId;
             Status = status;
             SharePath = sharePath;
-            ActualSize = actualSize;
-            ProvisionSize = provisionSize;
+            ActualSizeGB = actualSizeGB;
+            ProvisionSizeGB = provisionSizeGB;
             ManagedBy = managedBy;
             UserResourceId = userResourceId;
-            ResourceType = resourceType;
+            DiskType = diskType;
             DiskSku = diskSku;
             CustomInit();
         }
@@ -95,16 +96,16 @@ namespace Microsoft.AzureStack.Management.Compute.Admin.Models
         public string SharePath { get; set; }
 
         /// <summary>
-        /// Gets the actual size of disk.
+        /// Gets the actual size of disk in GB.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.actualSize")]
-        public long? ActualSize { get; private set; }
+        [JsonProperty(PropertyName = "properties.actualSizeGB")]
+        public long? ActualSizeGB { get; private set; }
 
         /// <summary>
-        /// Gets the provision size of disk.
+        /// Gets the provision size of disk in GB.
         /// </summary>
-        [JsonProperty(PropertyName = "properties.provisionSize")]
-        public long? ProvisionSize { get; private set; }
+        [JsonProperty(PropertyName = "properties.provisionSizeGB")]
+        public long? ProvisionSizeGB { get; private set; }
 
         /// <summary>
         /// Gets compute resource Uri which owns this disk.
@@ -113,17 +114,17 @@ namespace Microsoft.AzureStack.Management.Compute.Admin.Models
         public string ManagedBy { get; private set; }
 
         /// <summary>
-        /// Gets the disk resource Uri from tenant view.
+        /// Gets the disk resource Uri from user view.
         /// </summary>
         [JsonProperty(PropertyName = "properties.userResourceId")]
         public string UserResourceId { get; private set; }
 
         /// <summary>
-        /// Gets the type of the resource. Possible values include:
+        /// Gets the type of the disk resource. Possible values include:
         /// 'Undefined', 'Disk', 'Snapshot', 'RestorePoint', 'ManagedBlob'
         /// </summary>
-        [JsonProperty(PropertyName = "properties.resourceType")]
-        public string ResourceType { get; private set; }
+        [JsonProperty(PropertyName = "properties.diskType")]
+        public string DiskType { get; private set; }
 
         /// <summary>
         /// Gets the disk sku. Possible values include: 'Standard_LRS',

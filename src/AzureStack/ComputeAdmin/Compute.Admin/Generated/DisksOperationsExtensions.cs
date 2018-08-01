@@ -33,7 +33,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             /// Location of the resource.
             /// </param>
             /// <param name='userSubscriptionId'>
-            /// Tenant Subscription Id which the resource belongs to.
+            /// User Subscription Id which the resource belongs to.
             /// </param>
             /// <param name='status'>
             /// The parameters of disk state.
@@ -62,7 +62,7 @@ namespace Microsoft.AzureStack.Management.Compute.Admin
             /// Location of the resource.
             /// </param>
             /// <param name='userSubscriptionId'>
-            /// Tenant Subscription Id which the resource belongs to.
+            /// User Subscription Id which the resource belongs to.
             /// </param>
             /// <param name='status'>
             /// The parameters of disk state.

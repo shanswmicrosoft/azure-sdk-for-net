@@ -13,10 +13,10 @@ namespace Compute.Tests
         private void ValidateDisk(Disk disk)
         {
             Assert.NotNull(disk);
-            Assert.NotNull(disk.ActualSize);
-            Assert.NotNull(disk.ProvisionSize);
+            Assert.NotNull(disk.ActualSizeGB);
+            Assert.NotNull(disk.ProvisionSizeGB);
             Assert.NotNull(disk.DiskSku);
-            Assert.NotNull(disk.ResourceType);
+            Assert.NotNull(disk.DiskType);
             Assert.NotNull(disk.SharePath);
             Assert.NotNull(disk.Status);
             Assert.NotNull(disk.UserResourceId);
